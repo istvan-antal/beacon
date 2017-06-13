@@ -1,0 +1,16 @@
+{
+    "name": "core-mvc",
+    "version": "0.0.1",
+    "description": "Symfony like MVC implmentation on top of Express.",
+    "main": "index.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "mvc",
+        "symfony",
+        "express"
+    ],
+    "author": "István Miklós Antal",
+    "license": "MIT"
+}
