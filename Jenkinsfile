@@ -1,11 +1,14 @@
 node('nodejs') {
-    def version = (sh(returnStdout: true, script: 'git describe --tags')).trim()
-    def artifactName = "beacon-${version}.tar.gz"
+    def version
+    def artifactName
 
     dir('build') {
         stage('checkout') {
             checkout scm
         }
+
+        version = (sh(returnStdout: true, script: 'git describe --tags')).trim()
+        artifactName = "beacon-${version}.tar.gz"
 
         stage('npm install') {
             sh "npm install"
