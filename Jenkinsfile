@@ -1,13 +1,19 @@
 node('nodejs') {
-    stage('checkout') {
-        checkout scm
+    dir('build') {
+        stage('checkout') {
+            checkout scm
+        }
+
+        stage('npm install') {
+            sh "npm install"
+        }
+
+        stage('build') {
+            sh "npm run build"
+        }
+
+        sh 'tar -czvf ../archive.tar.gz .'
     }
 
-    stage('npm install') {
-        sh "npm install"
-    }
-
-    stage('build') {
-        sh "npm run build"
-    }
+    archiveArtifacts 'archive.tar.gz'
 }
