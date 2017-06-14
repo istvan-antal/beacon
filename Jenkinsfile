@@ -1,5 +1,5 @@
 node('nodejs') {
-    def version = (sh returnStdout: true, script: 'git describe --tags').trim()
+    def version = (sh(returnStdout: true, script: 'git describe --tags')).trim()
     def artifactName = "beacon-${version}.tar.gz"
 
     dir('build') {
