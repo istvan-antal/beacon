@@ -1,4 +1,7 @@
 node('nodejs') {
+    def version = (sh returnStdout: true, script: 'git describe --tags').trim()
+    def artifactName = "beacon-${version}.tar.gz"
+
     dir('build') {
         stage('checkout') {
             checkout scm
@@ -12,8 +15,10 @@ node('nodejs') {
             sh "npm run build"
         }
 
-        sh 'tar -czvf ../archive.tar.gz .'
+        sh "tar -czvf ../${artifactName} ."
     }
 
-    archiveArtifacts 'archive.tar.gz'
+    archiveArtifacts artifactName
+
+    cleanWs()
 }
