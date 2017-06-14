@@ -1,0 +1,18 @@
+[Unit]
+Description=Beacon API server
+Documentation=https://github.com/istvan-antal/beacon
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+LimitNOFILE=infinity
+LimitNPROC=infinity
+LimitCORE=infinity
+Environment=PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+WorkingDirectory=/home/pi/apps/beacon
+
+ExecStart=node dist/app.js
+
+[Install]
+WantedBy=multi-user.target
