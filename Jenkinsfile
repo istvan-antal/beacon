@@ -18,12 +18,14 @@ node('nodejs') {
             sh "npm run build"
         }
 
-        sh "tar -czvf ../${artifactName} ."
+        sh "tar -czvf ../${artifactName} --exclude .git --exclude src ."
     }
 
     archiveArtifacts artifactName
 
     cleanWs()
 
-    build 'beacon-deploy/master'
+    stage('deploy') {
+        build 'beacon-deploy/master'
+    }
 }
