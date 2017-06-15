@@ -24,4 +24,6 @@ node('nodejs') {
     archiveArtifacts artifactName
 
     cleanWs()
+
+    build 'beacon-deploy/master'
 }
