@@ -12,7 +12,7 @@ LimitCORE=infinity
 Environment=PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 WorkingDirectory=/home/pi/apps/beacon
 
-ExecStart=node dist/app.js
+ExecStart=/usr/local/bin/node dist/app.js
 
 [Install]
 WantedBy=multi-user.target
