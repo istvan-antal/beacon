@@ -34,7 +34,7 @@ const fetchCpuTemp = () => new Promise((resolve, reject) => {
     let command;
 
     if (sensorType === "macos") {
-        command = "macos-cpu-temp";
+        command = "./node_modules/.bin/macos-cpu-temp";
     }
 
     if (sensorType === "linux") {
