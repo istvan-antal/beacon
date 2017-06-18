@@ -23,12 +23,25 @@ export function Route(path: string) {
     };
 }
 
+function isPromise(result: any): result is PromiseLike<any> {
+    return result.then !== undefined;
+}
+
 export const init = (app: Express) => {
     controllers.forEach((routes: ControllerRoute[], ControllerClass: any) => {
         const controller = new ControllerClass.constructor();
         routes.forEach(route => {
             app.get(route.path, (request, response) => {
                 const result = controller[route.action]();
+
+                if (isPromise(result)) {
+                    result.then(result => {
+                        if (result instanceof JsonResponse) {
+                            response.json(result.getData());
+                            return;
+                        }
+                    });
+                }
 
                 if (result instanceof JsonResponse) {
                     response.json(result.getData());

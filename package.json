@@ -22,5 +22,8 @@
         "tslint": "^5.4.3",
         "typescript": "^2.3.4",
         "yargs": "^8.0.2"
+    },
+    "optionalDependencies": {
+        "macos-cpu-temp": "0.0.1"
     }
 }

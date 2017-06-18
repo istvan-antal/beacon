@@ -9,7 +9,6 @@ User=pi
 LimitNOFILE=infinity
 LimitNPROC=infinity
 LimitCORE=infinity
-Environment=PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 WorkingDirectory=/home/pi/apps/beacon
 
 ExecStart=/usr/local/bin/node dist/app.js
