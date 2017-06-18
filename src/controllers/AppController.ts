@@ -1,5 +1,16 @@
 import { Route, JsonResponse } from "../core-mvc";
-import { hostname, arch, cpus, platform, type, release, uptime, loadavg, totalmem } from "os";
+import {
+    hostname,
+    arch,
+    cpus,
+    platform,
+    type,
+    release,
+    uptime,
+    loadavg,
+    freemem,
+    totalmem,
+} from "os";
 
 class AppController {
     @Route("/")
@@ -13,6 +24,7 @@ class AppController {
             release: release(),
             uptime: uptime(),
             loadavg: loadavg(),
+            freemem: freemem(),
             totalmem: totalmem(),
         });
     }
