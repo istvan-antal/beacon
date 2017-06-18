@@ -16,7 +16,7 @@ import { exec } from "child_process";
 
 let sensorType: string;
 
-if (existsSync("./node_modules/.bin/macos-cpu-temp")) {
+if (platform() === "darwin") {
     sensorType = "macos";
 }
 
