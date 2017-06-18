@@ -25,7 +25,7 @@ node('nodejs') {
 
     cleanWs()
 
-    stage('deploy') {
-        build 'beacon-deploy/master'
+    stage('queue deploy') {
+        build job: 'beacon-deploy/master', quietPeriod: 5000, wait: false
     }
 }
