@@ -16,9 +16,7 @@ import { exec } from "child_process";
 
 let sensorType: string;
 
-try {
-    require.resolve("macos-cpu-temp");
-} catch(e) {
+if (existsSync("./node_modules/.bin/macos-cpu-temp")) {
     sensorType = "macos";
 }
 
@@ -43,7 +41,7 @@ const fetchCpuTemp = () => new Promise((resolve, reject) => {
         command = "/usr/bin/vcgencmd measure_temp  | cut -d\"=\" -f 2 | cut -d\"'\" -f 1";
     }
 
-    exec(command, (error, stdout) => {
+    exec(command, (error, stdout, stderr) => {
         if (error) {
             reject(error);
             return;
