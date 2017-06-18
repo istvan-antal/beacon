@@ -25,6 +25,7 @@
             "always",
             "ignore-bound-class-methods"
         ],
+        "arrow-parens": [true, "ban-single-arg-parens"],
         "no-internal-module": true,
         "no-trailing-whitespace": true,
         "no-null-keyword": true,

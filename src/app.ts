@@ -1,5 +1,16 @@
 import * as express from "express";
+import { argv } from "yargs";
+import { writeFileSync, unlinkSync } from "fs";
 import { init } from "./core-mvc";
+
+if (argv.pidFile) {
+    const pidFile = argv.pidFile;
+    writeFileSync(pidFile, process.pid);
+
+    process.on("exit", () => {
+        unlinkSync(pidFile);
+    });
+}
 
 import "./controllers/AppController";
 
