@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { argv } from 'yargs';
 import { writeFileSync, unlinkSync } from 'fs';
-import { init } from './core-mvc';
+import { includeControllers, init } from './core-mvc';
 
 const params = argv as { [key: string]: string };
 
@@ -16,6 +16,7 @@ if (params.pidFile) {
 
 /* tslint:disable-next-line: no-require-imports no-var-requires */
 require('./controllers/AppController');
+includeControllers('src/controllers/');
 
 const app = express();
 

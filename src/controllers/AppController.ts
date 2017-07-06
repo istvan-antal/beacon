@@ -1,36 +1,11 @@
 import { Route, JsonResponse } from '../core-mvc';
-import {
-    hostname,
-    arch,
-    cpus,
-    platform,
-    type,
-    release,
-    uptime,
-    loadavg,
-    freemem,
-    totalmem,
-} from 'os';
-import CpuTemperature from '../sources/CpuTemperature';
+import { MachineStatusCollector } from '../status';
 
-const cpuTemperatureSensor = new CpuTemperature();
+const statusCollector = new MachineStatusCollector();
 
 export class AppController {
     @Route('/')
-    async indexAction() {
-        const cpuTemperature = await cpuTemperatureSensor.fetchCpuTemp();
-        return new JsonResponse({
-            hostname: hostname(),
-            arch: arch(),
-            platform: platform(),
-            type: type(),
-            release: release(),
-            uptime: uptime(),
-            loadavg: loadavg(),
-            cpuTemperature,
-            freemem: freemem(),
-            totalmem: totalmem(),
-            cpus: cpus(),
-        });
+    indexAction() {
+        return new JsonResponse(statusCollector.getStatus());
     }
 }

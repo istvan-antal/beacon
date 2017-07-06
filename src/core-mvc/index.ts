@@ -1,4 +1,7 @@
 import { Express } from 'express';
+import { resolve, join } from 'path';
+import { readdirSync } from 'fs';
+
 /* tslint:disable: no-any */
 export class JsonResponse {
     private data: any;
@@ -56,4 +59,11 @@ export const init = (app: Express) => {
             });
         });
     });
+};
+
+export const includeControllers = (path: string) => {
+    const controllerFiles = readdirSync(resolve(path));
+    for (const controllerFile of controllerFiles) {
+        console.log('cont', join(path, controllerFile));
+    }
 };

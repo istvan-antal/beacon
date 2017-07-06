@@ -17,7 +17,7 @@ export default class CpuTemperature {
         }
     }
 
-    async fetchCpuTemp() {
+    async fetchCpuTemp(): Promise<number> {
         return new Promise((resolve, reject) => {
             if (!this.sensorType) {
                 reject(new Error('No supported sensor type'));
@@ -41,6 +41,6 @@ export default class CpuTemperature {
 
                 resolve(+(stdout.trim()));
             });
-        });
+        }) as Promise<number>;
     }
 }
