@@ -64,6 +64,10 @@ export const init = (app: Express) => {
 export const includeControllers = (path: string) => {
     const controllerFiles = readdirSync(resolve(path));
     for (const controllerFile of controllerFiles) {
-        console.log('cont', join(path, controllerFile));
+        if (!controllerFile.endsWith('js')) {
+            continue;
+        }
+        /* tslint:disable-next-line:no-require-imports */
+        require(join(path, controllerFile));
     }
 };

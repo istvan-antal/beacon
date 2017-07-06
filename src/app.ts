@@ -14,9 +14,7 @@ if (params.pidFile) {
     });
 }
 
-/* tslint:disable-next-line: no-require-imports no-var-requires */
-require('./controllers/AppController');
-includeControllers('src/controllers/');
+includeControllers(`${__dirname}/controllers/`);
 
 const app = express();
 
