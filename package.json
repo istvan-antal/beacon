@@ -9,7 +9,7 @@
         "watch-ts": "tsc -w",
         "build": "tsc",
         "prebuild": "npm run test",
-        "test": "tslint -c tslint.json -p tsconfig.json"
+        "test": "tslint -c tslint.json --type-check -p tsconfig.json"
     },
     "author": "István Miklós Antal",
     "license": "MIT",
