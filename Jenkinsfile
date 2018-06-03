@@ -7,7 +7,7 @@ node('nodejs') {
             checkout scm
         }
 
-        version = (sh(returnStdout: true, script: 'git describe --tags')).trim()
+        /* version = (sh(returnStdout: true, script: 'git describe --tags')).trim()
         artifactName = "beacon-${version}.tar.gz"
 
         stage('npm install') {
@@ -18,14 +18,14 @@ node('nodejs') {
             sh "npm run build"
         }
 
-        sh "tar -czvf ../${artifactName} --exclude .git --exclude src ."
+        sh "tar -czvf ../${artifactName} --exclude .git --exclude src ."*/
     }
 
-    archiveArtifacts artifactName
+    // archiveArtifacts artifactName
 
     cleanWs()
 
-    stage('queue deploy') {
+    /* stage('queue deploy') {
         build job: 'beacon-deploy/master', quietPeriod: 30, wait: false
-    }
+    }*/
 }
